@@ -10,7 +10,7 @@ RUN wget https://github.com/PowerShell/PowerShell/releases/download/v7.3.6/power
     dpkg -i powershell_7.3.6-1.deb_amd64.deb && \
     rm powershell_7.3.6-1.deb_amd64.deb
 
-RUN /usr/bin/pwsh -nologo -command "Install-Module powershell-yaml -Force"
+RUN /usr/bin/pwsh -command "Install-Module powershell-yaml -Force"
 
 # bitbucket runner
 RUN curl https://product-downloads.atlassian.com/software/bitbucket/pipelines/atlassian-bitbucket-pipelines-runner-1.492.tar.gz --output atlassian-bitbucket-pipelines-runner.tar.gz && \
