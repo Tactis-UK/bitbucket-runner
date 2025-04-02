@@ -6,11 +6,19 @@ services:
     container_name: bitbucket-runner
     volumes:
       - /Volumes/repo:/Volumes/repo
-      - /home/aharper/ccs-manifest:/ccs-manifest
+      - /home/certus/ccs-manifest:/ccs-manifest
     environment:
-      - ACCOUNT_UUID=${ACCOUNT_UUID:-accountUuid}
-      - REPOSITORY_UUID=${REPOSITORY_UUID:-repositoryUuid}
-      - RUNNER_UUID=${RUNNER_UUID:-runnerUuid}
-      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID:-OAuthClientId}
-      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET:-OAuthClientSecret}
-    command: /atlassian-bitbucket-pipelines-runner/bin/start.sh --accountUuid ${ACCOUNT_UUID:-accountUuid} --repositoryUuid ${REPOSITORY_UUID:-repositoryUuid} --runnerUuid ${RUNNER_UUID:-runnerUuid} --OAuthClientId ${OAUTH_CLIENT_ID:-OAuthClientId} --OAuthClientSecret ${OAUTH_CLIENT_SECRET:-OAuthClientSecret} --runtime linux-shell --workingDirectory /atlassian-bitbucket-pipelines-runner/temp
+      - ACCOUNT_UUID=${ACCOUNT_UUID}
+      - REPOSITORY_UUID=${REPOSITORY_UUID}
+      - RUNNER_UUID=${RUNNER_UUID}
+      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID}
+      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET}
+    command: >
+      /atlassian-bitbucket-pipelines-runner/bin/start.sh
+      --accountUuid ${ACCOUNT_UUID}
+      --repositoryUuid ${REPOSITORY_UUID}
+      --runnerUuid ${RUNNER_UUID}
+      --OAuthClientId ${OAUTH_CLIENT_ID}
+      --OAuthClientSecret ${OAUTH_CLIENT_SECRET}
+      --runtime linux-shell
+      --workingDirectory /atlassian-bitbucket-pipelines-runner/temp
