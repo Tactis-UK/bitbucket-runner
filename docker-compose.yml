@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  bitbucket-runner:
+    image: tactis/bitbucket-runner
+    container_name: bitbucket-runner
+    volumes:
+      - /Volumes/repo:/Volumes/repo
+      - /home/aharper/ccs-manifest:/ccs-manifest
+    environment:
+      - ACCOUNT_UUID=${ACCOUNT_UUID:-accountUuid}
+      - REPOSITORY_UUID=${REPOSITORY_UUID:-repositoryUuid}
+      - RUNNER_UUID=${RUNNER_UUID:-runnerUuid}
+      - OAUTH_CLIENT_ID=${OAUTH_CLIENT_ID:-OAuthClientId}
+      - OAUTH_CLIENT_SECRET=${OAUTH_CLIENT_SECRET:-OAuthClientSecret}
+    command: /atlassian-bitbucket-pipelines-runner/bin/start.sh --accountUuid ${ACCOUNT_UUID:-accountUuid} --repositoryUuid ${REPOSITORY_UUID:-repositoryUuid} --runnerUuid ${RUNNER_UUID:-runnerUuid} --OAuthClientId ${OAUTH_CLIENT_ID:-OAuthClientId} --OAuthClientSecret ${OAUTH_CLIENT_SECRET:-OAuthClientSecret} --runtime linux-shell --workingDirectory /atlassian-bitbucket-pipelines-runner/temp
