@@ -5,8 +5,7 @@ services:
     image: tactis/bitbucket-runner
     container_name: bitbucket-runner
     volumes:
-      - /Volumes/repo:/Volumes/repo
-      - /home/certus/ccs-manifest:/ccs-manifest
+      - /Volumes/repo:/Volumes/repo:ro # For inventory validation runner
     environment:
       - ACCOUNT_UUID=${ACCOUNT_UUID}
       - REPOSITORY_UUID=${REPOSITORY_UUID}
